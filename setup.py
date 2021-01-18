@@ -18,7 +18,7 @@ URL = 'https://github.com/jdrumgoole/thonto'
 EMAIL = 'Joe.Drumgoole@mongodb.com'
 AUTHOR = 'Joe Drumgoole'
 REQUIRES_PYTHON = '>=3.6.0'
-VERSION = '0.0.1a'
+VERSION = '0.0.2a'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
@@ -115,7 +115,8 @@ setup(
     classifiers=[
         # Trove classifiers
         # Full list: https://pypi.python.org/pypi?%3Aaction=list_classifiers
-        'License :: OSI Approved :: MIT License',
+        'License :: OSI Approved :: Apache Software License',
+        'Natural Language :: English',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.6',
