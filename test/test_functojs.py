@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from pythontojs.functojs import FuncToJS
+from thonto.functojs import FuncToJS
 from .simple_function import simple_function
 
 
@@ -23,13 +23,11 @@ class TestJSCode(unittest.TestCase):
 
     def test_Code(self):
 
-        javascript_code = "function myFunction(p1, p2) {" \
-                          "return p1 * p2;   // The function returns the" \
-                          "}                 //product of p1 and p2"
+        javascript_code = "function (x, y, z) {return [x, y, z];};"
 
         self.assertRaises(ValueError, FuncToJS, TestJSCode.error_function)
         x = FuncToJS(dummy_function, "bish", "bash", "bosh")
-        print(x.js_code_min)
+        self.assertEqual(javascript_code, x.js_code_min)
         os.unlink(x.hash_path)
 
 if __name__ == '__main__':

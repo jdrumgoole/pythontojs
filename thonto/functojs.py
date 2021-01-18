@@ -1,6 +1,4 @@
-"""
-Represent code fragments in used in $function and other places.
-"""
+
 from datetime import datetime
 import hashlib
 import os
@@ -23,32 +21,7 @@ class FuncToJS:
 
     TARGET_DIR = "__target__"
 
-    @staticmethod
-    def add_dollar(s):
-        """
-        Add a preceding dollar ($) to a string unless one exists already
-        """
-        if s is None:
-            raise ValueError("Cannot add a $ sign to None")
 
-        assert s[0] not in ["'", "\""]
-
-        if s.startswith("$"):
-            return s
-        else:
-            return f"${s}"
-
-    @staticmethod
-    def remove_dollar(s):
-        if s is None:
-            raise ValueError("Cannot add a $ sign to None")
-
-        assert s[0] not in ["'", "\""]
-
-        if s.startswith("$"):
-            return s[1:]
-        else:
-            return s
 
     def __init__(self, python_func, *args):
 
@@ -151,4 +124,30 @@ class FuncToJS:
                                          )
                     if not definition.endswith(f.__name__):
                         raise ValueError(f"Parsing of {filename} failed at line {count}"
-                                         f"function definition is {definition} not {function_name}")
+                                         f"function definition is {definition} not {f.__name__}")
+    @staticmethod
+    def add_dollar(s):
+        """
+        Add a preceding dollar ($) to a string unless one exists already
+        """
+        if s is None:
+            raise ValueError("Cannot add a $ sign to None")
+
+        assert s[0] not in ["'", "\""]
+
+        if s.startswith("$"):
+            return s
+        else:
+            return f"${s}"
+
+    @staticmethod
+    def remove_dollar(s):
+        if s is None:
+            raise ValueError("Cannot add a $ sign to None")
+
+        assert s[0] not in ["'", "\""]
+
+        if s.startswith("$"):
+            return s[1:]
+        else:
+            return s

@@ -1,6 +1,6 @@
 import unittest
 
-import pymag
+import thonto
 
 """
 Default test cluster mongodb+srv://readonly:readonly@demodata.rgl39.mongodb.net/<dbname>?retryWrites=true&w=majority
@@ -26,10 +26,8 @@ class TestOperators(unittest.TestCase):
         self.col = db["zipcodes"]
 
     def test_limit(self):
-        p = pymag.Pipeline()
-        limiter = pymag.limit(10)
-        p.append(limiter)
-        print(p)
+        limiter = {"$limit": 10}
+
         c = p.aggregate(self.col)
         for d in c:
             print(d)
